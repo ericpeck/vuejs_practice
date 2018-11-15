@@ -8,7 +8,7 @@
         <script src="vue.js"></script>
     </head>
     <body>
-        
+  <!--     
         <div id="app">
             <h2>Todos:</h2>
             <ol>
@@ -46,6 +46,42 @@
                         todo.done = !todo.done
                     }
                 }
+            })
+        </script>
+    -->
+
+        <div id="test">
+            <div>
+                <p>Current Value: {{ value }}</p>
+                <button @click="value += 5">Add 5</button>
+                <button @click="value += 1">Add 1</button>
+                <p>{{ result }}</p>
+            </div>
+            <div>
+                <input type="text">
+                <p>{{ value }}</p>
+            </div>
+        </div>
+
+        <script>
+            new Vue({
+                    el: '#test',
+                    data: {
+                        value: 0
+                    },
+                    computed: {
+                        result: function() {
+                            return this.value == 37 ? 'done' : 'not there yet';
+                        }
+                    },
+                    watch: {
+                        result: function() {
+                            var vm = this;
+                            setTimeout(function() {
+                                vm.value = 0;
+                            }, 5000);
+                        }
+                    }
             })
         </script>
     </body>
